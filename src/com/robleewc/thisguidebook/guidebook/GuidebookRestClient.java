@@ -27,19 +27,12 @@ public class GuidebookRestClient {
 
     /* Endpoints */
 
-    protected static final String BASE_URL = "http://guidebook.com/";
-    public static final String API_UPCOMING_GUIDES = "http://guidebook.com/service/v2/upcomingGuides/";
+    protected static final String BASE_URL = "http://guidebook.com/service/v2/";
+    public static final String API_UPCOMING_GUIDES = "upcomingGuides/";
 
     private static GuidebookRestClient singleton;
 
     private GuidebookRestClient(Context ctx) {
-    }
-
-    public static synchronized GuidebookRestClient getInstance(Context ctx) {
-        if (singleton == null) {
-            singleton = new GuidebookRestClient(ctx);
-        }
-        return singleton;
     }
 
     private String getAbsoluteUrl(String relativeUrl) {
@@ -53,10 +46,18 @@ public class GuidebookRestClient {
         return gson;
     }
 
+    /**** Public ******/
+    public static synchronized GuidebookRestClient getInstance(Context ctx) {
+        if (singleton == null) {
+            singleton = new GuidebookRestClient(ctx);
+        }
+        return singleton;
+    }
+
     public void doGetGuideLists(FutureCallback<Response<GuideList>> future, Context ctx) {
         Gson gson = getGuideListsTypeAdapter();
         Ion.getDefault(ctx).configure().setGson(gson);
-        Ion.with(ctx, API_UPCOMING_GUIDES)
+        Ion.with(ctx, getAbsoluteUrl(API_UPCOMING_GUIDES))
                 .setLogging(LOG_TAG, Log.DEBUG)
                 .as(new TypeToken<GuideList>() {
                 })

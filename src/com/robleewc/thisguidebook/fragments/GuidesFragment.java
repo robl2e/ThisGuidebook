@@ -86,12 +86,12 @@ public class GuidesFragment extends Fragment {
                 return;
             }
 
+            // Update UI
             mListAdapter = buildListData(guideList);
-            updateList(mListAdapter);
+            updateListUI(mListAdapter);
         }
 
     };
-
     /******************************************************/
     /******************************************************/
     ListAdapter mListAdapter;
@@ -104,7 +104,7 @@ public class GuidesFragment extends Fragment {
         GuidebookRestClient.getInstance(getActivity()).doGetGuideLists(mGuideListFC, getActivity());
     }
 
-    private void updateList(ListAdapter adapt) {
+    private void updateListUI(ListAdapter adapt) {
         mListView.setAdapter(adapt);
     }
 

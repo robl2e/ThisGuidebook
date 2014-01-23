@@ -45,7 +45,7 @@ public class GuideItemListAdapter extends ArrayAdapter<Guide> {
         final ViewHolder viewHolder;
 
         if (convertView == null) {
-            convertView = mInflater.inflate(R.layout.guide_list_item, parent,
+            convertView = mInflater.inflate(R.layout.list_item_guide, parent,
                     false);
 
             viewHolder = new ViewHolder();

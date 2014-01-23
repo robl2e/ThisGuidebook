@@ -32,7 +32,7 @@ public class GuidebookRestClient {
 
     private static GuidebookRestClient singleton;
 
-    public GuidebookRestClient(Context ctx) {
+    private GuidebookRestClient(Context ctx) {
     }
 
     public static synchronized GuidebookRestClient getInstance(Context ctx) {
@@ -57,7 +57,7 @@ public class GuidebookRestClient {
         Gson gson = getGuideListsTypeAdapter();
         Ion.getDefault(ctx).configure().setGson(gson);
         Ion.with(ctx, API_UPCOMING_GUIDES)
-                .setLogging(LOG_TAG, Log.INFO)
+                .setLogging(LOG_TAG, Log.DEBUG)
                 .as(new TypeToken<GuideList>() {
                 })
                 .withResponse()

@@ -17,6 +17,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.koushikdutta.urlimageviewhelper.UrlImageViewHelper;
 import com.robleewc.thisguidebook.R;
 import com.robleewc.thisguidebook.models.Guide;
 
@@ -60,6 +61,8 @@ public class GuideItemListAdapter extends ArrayAdapter<Guide> {
         // Get object and fill view
         Guide model = getItem(position);
         viewHolder.title.setText(model.getName());
+
+        UrlImageViewHelper.setUrlDrawable(viewHolder.icon, model.getIcon(), R.drawable.ic_launcher);
 
         return convertView;
     }

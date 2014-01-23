@@ -63,7 +63,7 @@ public class GuidesFragment extends Fragment {
     }
 
     /******************************************************/
-    /***************** LISTENERS ******************/
+    /***************** CALLBACKS ******************/
     /******************************************************/
 
     private FutureCallback<Response<GuideList>> mGuideListFC = new FutureCallback<Response<GuideList>>() {
@@ -78,7 +78,7 @@ public class GuidesFragment extends Fragment {
             String respMsg = result.getHeaders().getResponseMessage();
             int respCode = result.getHeaders().getResponseCode();
             String headers = result.getHeaders().toHeaderString();
-            Log.d(LOG_TAG, "headers = " + headers);
+            Log.d(LOG_TAG, "headers = " + headers); // debugging
 
             List<Guide> guideList = result.getResult().getData();
             if (guideList == null) {
